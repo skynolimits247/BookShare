@@ -147,8 +147,8 @@ Wishlist.belongsTo(Product, { onDelete: 'cascade' });
 Product.hasMany(Wishlist, { onDelete: 'cascade' });
 Wishlist.belongsTo(User);
 User.hasMany(Wishlist, { onDelete: 'cascade' });
-db.sync()
-//db.sync({force : true})
+//db.sync()
+db.sync({force : true})
 	.then(() => console.log("Database have been synced"))
 	.catch((err) => console.error(err))
 exports = module.exports = {

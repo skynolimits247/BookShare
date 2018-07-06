@@ -55,141 +55,103 @@ var ApiserviceService = /** @class */ (function () {
     }
     /*Api Servie to Add  a new User */
     ApiserviceService.prototype.addUser = function (model) {
-        //console.log('in data get shopp in service')
         return this.http.post('/signup', model, httpOptions);
     };
     /*Api Service Call to get User details by email While loggingIn*/
     ApiserviceService.prototype.getUser = function (model) {
-        // console.log('in service')
-        // console.log(model)
         return this.http.post('/login', model, httpOptions);
     };
     /*Api Serive to fetch User details by Id */
     ApiserviceService.prototype.getUserId = function (model, id) {
-        console.log('in service getUserId id = ' + id);
         var s = '/login/' + id;
-        console.log("s = " + s);
         return this.http.get(s);
     };
     /*Api Service Call to get Book detail by BookId */
     ApiserviceService.prototype.getBookId = function (book, id) {
-        console.log('in service getBookId id = ' + id);
         var s = '/view/' + id;
-        console.log("s = " + s);
         return this.http.get(s);
     };
     /*Api Service Call to add a book to Cart */
     ApiserviceService.prototype.addCart = function (book, id, id2) {
-        console.log('in service addCart id = ' + id);
         var s = '/cart/' + id + '/' + id2;
-        console.log("s = " + s);
         return this.http.post(s, book, httpOptions);
     };
     /*Api Service Call to add a Message */
     ApiserviceService.prototype.addMessage = function (messages) {
-        console.log('in service addCart id = ');
         var s = '/message';
-        console.log("s = " + s);
         return this.http.post(s, messages, httpOptions);
     };
     /*Api Service Call to retrieve Message */
     ApiserviceService.prototype.getMessage = function (messages, id) {
-        console.log('in service addCart id = ' + id);
         var s = '/message/' + id;
-        console.log("s = " + s);
         return this.http.get(s);
     };
     /*Api Service Call to add a book to wishlist */
     ApiserviceService.prototype.addWish = function (book, id, id2) {
-        console.log('in service addCart id = ' + id);
         var s = '/wishlist/' + id + '/' + id2;
-        console.log("s = " + s);
         return this.http.post(s, book, httpOptions);
     };
     /*Api Service Call to get All Books To display on hompage */
     ApiserviceService.prototype.getBook = function (book) {
-        console.log('in service getBook');
         return this.http.get('/home');
     };
     /*Api Service Call to get User's Cart Details */
     ApiserviceService.prototype.getCart = function (carts, id) {
-        console.log('in service addCart id = ' + id);
         var s = '/cart/get/' + id;
-        console.log("s = " + s);
         return this.http.get(s);
     };
     /*Api Service Call to get User's wishlist Details */
     ApiserviceService.prototype.getWish = function (carts, id) {
-        console.log('in service addCart id = ' + id);
         var s = '/wishlist/get/' + id;
-        console.log("s = " + s);
         return this.http.get(s);
     };
     /*Api Service Call to delete an Item From User's cart */
     ApiserviceService.prototype.delCart = function (carts, id, id2) {
-        console.log('in service delCart id = ' + id + " " + id2);
         var s = '/remove/' + id + '/' + id2;
-        console.log("s = " + s);
         return this.http.post(s, carts, httpOptions);
     };
     /*Api Service Call to delete an Item From User's wishList */
     ApiserviceService.prototype.delWish = function (carts, id, id2) {
-        console.log('in service delCart id = ' + id + " " + id2);
         var s = '/wishlistremove/' + id + '/' + id2;
-        console.log("s = " + s);
         return this.http.post(s, carts, httpOptions);
     };
     /*Api Service Call to delete a post posted by User */
     ApiserviceService.prototype.deleteBook = function (books, id, id2) {
-        console.log('in service delCart id = ' + id + " " + id2);
         var s = '/bokdel/' + id + '/' + id2;
-        console.log("s = " + s);
         return this.http.post(s, books, httpOptions);
     };
     /*Api Service Call for checkout */
     ApiserviceService.prototype.checkOut = function (id) {
-        console.log('in service delCart id = ' + id);
         var s = '/checkout/' + id;
-        console.log("s = " + s);
         return this.http.post(s, httpOptions);
     };
     /*Api Service Call to Get count of Cart Items */
     ApiserviceService.prototype.getCartcount = function (id) {
-        console.log('in service getCartcount id = ' + id);
         var s = '/cart/count/' + id;
-        console.log("s = " + s);
         return this.http.get(s);
     };
     /*Api Service Call to Get count of Wish Items */
     ApiserviceService.prototype.getWishcount = function (id) {
-        console.log('in service getCartcount id = ' + id);
         var s = '/wishlist/count/' + id;
-        console.log("s = " + s);
         return this.http.get(s);
     };
     /*Api Service Call to get min and max price of books  */
     ApiserviceService.prototype.getMinMax = function () {
-        console.log('in service minmax');
         var s = '/minmax';
-        console.log("s = " + s);
         return this.http.get(s);
     };
     /*Api Service Call to get All Books between a specified price range */
     ApiserviceService.prototype.getBookByPrice = function (book, id) {
-        console.log('in service getBookByPrice' + id);
         var s = '/search/price/' + id;
         return this.http.get(s);
     };
     /*Api Service Call to get All Books by a search Query */
     ApiserviceService.prototype.getBookByQuery = function (book, id) {
-        console.log('in service getBookByQuery' + id);
         var s = '/search/' + id;
         return this.http.get(s);
     };
     /*Api Service Call to Add a book */
     ApiserviceService.prototype.addBook = function (book) {
-        console.log("in service");
-        console.log(book);
         return this.http.post('/addproduct', book, httpOptions);
     };
     ApiserviceService = __decorate([

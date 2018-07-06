@@ -19,10 +19,10 @@ route.post('/:id/:id2',(req, res) =>{
                                             productkey:id
                                               }
                                                 })
-                                        }).then(result => {
+                                        }).then((resu) => {
                                             Product.findAll({
-                                                include:[{model:User }]
-                                                            }).then(result => {
+                                                include:{model:User }
+                                                            }).then((result) => {
                                                                 console.log("result = ")
                                                                 console.log(result[0]);
                                                                 res.send(result)

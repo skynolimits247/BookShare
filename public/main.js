@@ -442,44 +442,30 @@ var BodyComponent = /** @class */ (function () {
     }
     BodyComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log("in init");
-        //console.log(JSON.parse(sessionStorage.getItem('user')))
         if (JSON.parse(sessionStorage.getItem('user')) == null) {
-            console.log("in if ");
         }
         else {
-            console.log("in else");
             this.user = JSON.parse(sessionStorage.getItem('user'));
             this.fname = this.user.fname;
         }
         this.apiservice.getBook(this.books).subscribe(function (books) {
-            console.log("in service call");
             _this.books = books;
-            console.log(_this.books);
         });
     };
     BodyComponent.prototype.view = function (id) {
-        console.log("in view function id= " + id);
         this.router.navigate(['view', id]);
     };
     BodyComponent.prototype.search = function (query) {
         var _this = this;
-        console.log(query);
         this.apiservice.getBookByQuery(this.books, query).subscribe(function (books) {
-            console.log("in service call getBookByQuery");
             _this.books = books;
-            console.log(_this.books);
         });
     };
     BodyComponent.prototype.sortPrice = function (query) {
         var _this = this;
-        console.log(query);
         this.apiservice.getMinMax().subscribe(function (books) {
-            console.log("in service call getBookByQuery");
             _this.apiservice.getBookByPrice(_this.books, query).subscribe(function (books) {
-                console.log("in service call getBookByQuery");
                 _this.books = books;
-                console.log(_this.books);
             });
         });
     };
@@ -487,9 +473,7 @@ var BodyComponent = /** @class */ (function () {
         var _this = this;
         this.query = '';
         this.apiservice.getBook(this.books).subscribe(function (books) {
-            console.log("in service call");
             _this.books = books;
-            console.log(_this.books);
         });
     };
     BodyComponent = __decorate([
@@ -564,17 +548,10 @@ var CartComponent = /** @class */ (function () {
     }
     CartComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //    this.router.paramMap.subscribe( (params: ParamMap) =>{
-        //    this.selected = +(params.get('id'));
-        //    console.log("in cart")
-        //    console.log(this.selected);
         this.user = JSON.parse(sessionStorage.getItem('user'));
         this.apiservice.getCart(this.carts, this.user.id).subscribe(function (carts) {
-            console.log("in service call getcomponent = ");
-            console.log(carts);
             _this.carts = carts;
             for (var data in carts) {
-                //console.log(" price = ")
                 _this.i += carts[data].product.resellPrice;
                 _this.j += carts[data].product.actualPrice;
             }
@@ -584,29 +561,17 @@ var CartComponent = /** @class */ (function () {
         var _this = this;
         this.i = 0;
         this.j = 0;
-        console.log(id);
-        console.log("userid = ");
-        console.log(this.user.id);
         this.apiservice.delCart(this.carts, id, this.user.id).subscribe(function (carts) {
-            console.log("in service call delCart = ");
-            console.log(carts);
             _this.carts = carts;
             for (var data in carts) {
-                //console.log(" price = ")
                 _this.i += carts[data].product.resellPrice;
                 _this.j += carts[data].product.actualPrice;
             }
             _this.apiservice.getCartcount(_this.user.id).subscribe(function (i) {
-                console.log("in service call getCartcount = ");
                 _this.j = i.count;
-                console.log("j=");
-                console.log(_this.j);
                 document.getElementById("carttext").innerText = "Cart :" + _this.j + " item(s)";
                 _this.apiservice.getWishcount(_this.user.id).subscribe(function (i) {
-                    console.log("in service call getCartcount = ");
                     _this.j = i.count;
-                    console.log("j=");
-                    console.log(_this.j);
                     document.getElementById("wishtext").innerText = "WishList :" + _this.j + " item(s)";
                 });
             });
@@ -618,10 +583,7 @@ var CartComponent = /** @class */ (function () {
         var _this = this;
         this.i = 0;
         this.j = 0;
-        console.log("userid = ");
-        console.log(this.user.id);
         this.apiservice.checkOut(this.user.id).subscribe(function (carts) {
-            console.log("in service call delCart = ");
             _this.router1.navigateByUrl('/');
         });
     };
@@ -756,40 +718,27 @@ var HeaderComponent = /** @class */ (function () {
     }
     HeaderComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //this is the hiding mechanism 
         if (JSON.parse(sessionStorage.getItem('user')) == null) {
-            console.log("in if ");
         }
         else {
-            console.log("in else calculating cart value");
             var user = JSON.parse(sessionStorage.getItem('user'));
             var name = user.fname;
             this.apiservice.getCartcount(user.id).subscribe(function (i) {
-                console.log("in service call getCartcount = ");
                 _this.j = i.count;
-                console.log("j=");
-                console.log(_this.j);
                 document.getElementById("carttext").innerText = "Cart :" + _this.j + " item(s)";
                 _this.apiservice.getWishcount(user.id).subscribe(function (i) {
-                    console.log("in service call getCartcount = ");
                     _this.j = i.count;
-                    console.log("j=");
-                    console.log(_this.j);
                     document.getElementById("wishtext").innerText = "WishList :" + _this.j + " item(s)";
                 });
             });
         }
-        console.log("session_name = ");
-        console.log(name);
         if (name == undefined) {
-            console.log("header in if");
             document.getElementById("logout").style.display = "none";
             document.getElementById("cart").style.display = "none";
             document.getElementById("wishlist").style.display = "none";
             document.getElementById("sell").style.display = "none";
         }
         else {
-            console.log("header in else");
             document.getElementById("login").style.display = "none";
             document.getElementById("signup").style.display = "none";
         }
@@ -933,13 +882,9 @@ var SellComponent = /** @class */ (function () {
     }
     SellComponent.prototype.ngOnInit = function () {
         if (JSON.parse(sessionStorage.getItem('user')) == null) {
-            console.log("in if ");
         }
         else {
-            console.log("in else");
             this.user = JSON.parse(sessionStorage.getItem('user'));
-            console.log("user = ");
-            console.log(this.user);
         }
     };
     SellComponent.prototype.onFileSelected = function (event) {
@@ -949,13 +894,10 @@ var SellComponent = /** @class */ (function () {
     //   var fd = new FormData();
     //   fd.append('image', this.selectedFile, this.selectedFile.name);
     //   this.http.post('http://localhost:3333/upload', fd).subscribe(res=>{
-    //     console.log(res)
     //   })
     // }
     SellComponent.prototype.addUser = function (frm) {
         var _this = this;
-        console.log("model = ");
-        console.log(frm.value);
         var s = '';
         var fd = new FormData();
         if (frm.value.authorName == '' || frm.value.condition == "" || frm.value.actualPrice == "" || frm.value.resellPrice == "" || this.user.id == "" || this.selectedFile == undefined) {
@@ -963,14 +905,8 @@ var SellComponent = /** @class */ (function () {
         }
         else {
             fd.append('image', this.selectedFile, this.selectedFile.name);
-            console.log("fd = ");
-            console.log(fd);
             this.http.post('/upload', fd).subscribe(function (res) {
-                console.log("image uploaded");
                 s = res.toString();
-                console.log(res);
-                console.log("userid= ");
-                console.log(_this.user.id);
                 var book = {
                     name: frm.value.name,
                     authorName: frm.value.authorName,
@@ -980,10 +916,7 @@ var SellComponent = /** @class */ (function () {
                     image: 'uploads/' + s,
                     postedby: _this.user.id,
                 };
-                console.log("service call");
-                console.log(book);
                 _this.apiservice.addBook(book).subscribe(function (book) {
-                    console.log("added");
                     alert("Successfully Added Book for sale..!!");
                 });
             });
@@ -1057,22 +990,20 @@ var SignupComponent = /** @class */ (function () {
         this.currentRoute = currentRoute;
         this.router = router;
     }
+    SignupComponent.prototype.ngOnInit = function () {
+    };
     SignupComponent.prototype.addUser = function (frm) {
         var _this = this;
         if (frm.value.fname == "" || frm.value.lname == '' || frm.value.address == '' || frm.value.college == '' || frm.value.course == "" || frm.value.email == "" || frm.value.mob == "" || frm.value.pass == "") {
             alert("Please fill all the details of the form....!!!");
         }
         else {
-            console.log(frm.value);
             var model = {
                 email: frm.value.email,
                 password: frm.value.pass
             };
             this.apiservice.getUser(model).subscribe(function (model) {
-                console.log("model = ");
-                console.log(model);
                 if (model == null) {
-                    console.log("inside if");
                     var model_1 = {
                         fname: frm.value.fname,
                         lname: frm.value.lname,
@@ -1097,32 +1028,23 @@ var SignupComponent = /** @class */ (function () {
     };
     SignupComponent.prototype.logUser = function (frn) {
         var _this = this;
-        console.log(frn.value);
-        console.log("frm value");
         var model = {
             email: frn.value.email,
             password: frn.value.password
         };
         this.apiservice.getUser(model).subscribe(function (model) {
-            console.log("model = ");
-            console.log(model);
             if (model == null) {
                 alert("EmailID is not registered..!!");
             }
             else if (model.password == frn.value.password && model.email == frn.value.email) {
-                console.log("in if login user successful");
                 sessionStorage.setItem('user', JSON.stringify(model));
                 alert("LogIn Successful...!!");
                 _this.router.navigateByUrl('/');
             }
             else {
-                console.log("in else login user unsuccessful");
                 alert("Invalid EmailID OR Password..!!");
             }
         });
-    };
-    SignupComponent.prototype.ngOnInit = function () {
-        //this.getModels();
     };
     SignupComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1200,22 +1122,13 @@ var SingleViewComponent = /** @class */ (function () {
         }
         else {
             this.user = JSON.parse(sessionStorage.getItem('user'));
-            console.log("tis.userid = ");
-            console.log(this.user.id);
         }
         this.router.paramMap.subscribe(function (params) {
             _this.selected = +(params.get('id'));
-            console.log(_this.selected);
             _this.apiservice.getBookId(_this.books, _this.selected).subscribe(function (books) {
-                console.log("in service call");
                 _this.books = books[0];
-                console.log("this.books getbookId");
-                console.log(_this.books);
                 _this.apiservice.getMessage(_this.message, _this.books.id).subscribe(function (message) {
-                    console.log("in service call");
                     _this.message = message;
-                    console.log("this.books getbookId");
-                    console.log(_this.message);
                 });
             });
         });
@@ -1227,21 +1140,11 @@ var SingleViewComponent = /** @class */ (function () {
             this.router1.navigateByUrl('/login');
         }
         else {
-            console.log("i=");
-            console.log(id);
-            console.log("in view function id= " + id);
-            console.log(this.user);
-            console.log("user id = ", this.user.id);
-            //this.router1.navigate(['cart', id]);
             this.apiservice.addCart(this.books, id, this.user.id).subscribe(function (books) {
-                console.log("in service addcart call");
-                console.log(books.status);
                 if (books.status == 1) {
-                    console.log("in if");
                     alert("Item Succesfully Added to Cart");
                 }
                 else {
-                    console.log("in else");
                     alert("Item already added in cart...!!");
                 }
                 _this.router1.navigateByUrl('/');
@@ -1255,21 +1158,11 @@ var SingleViewComponent = /** @class */ (function () {
             this.router1.navigateByUrl('/login');
         }
         else {
-            console.log("i=");
-            console.log(id);
-            console.log("in view function id= " + id);
-            console.log(this.user);
-            console.log("user id = ", this.user.id);
-            //this.router1.navigate(['cart', id]);
             this.apiservice.addWish(this.books, id, this.user.id).subscribe(function (books) {
-                console.log("in service addcart call status : ");
-                console.log(books.status);
                 if (books.status == 1) {
-                    console.log("in if");
                     alert("Item Succesfully Added to Wishlist..!!");
                 }
                 else {
-                    console.log("in else");
                     alert("Item already added in Wishlist / Cart...!!");
                 }
                 _this.router1.navigateByUrl('/');
@@ -1278,14 +1171,7 @@ var SingleViewComponent = /** @class */ (function () {
     };
     SingleViewComponent.prototype.delBook = function (id) {
         var _this = this;
-        console.log("inside delete books");
-        console.log(id);
-        console.log(this.books);
         this.apiservice.deleteBook(this.books, id, this.user.id).subscribe(function (books) {
-            console.log("in service call");
-            //this.books=books
-            //console.log(this.books)
-            //alert("Your Post was deleted Successfully..!!")
             _this.router1.navigateByUrl('/');
         });
     };
@@ -1296,8 +1182,6 @@ var SingleViewComponent = /** @class */ (function () {
             this.router1.navigateByUrl('/login');
         }
         else {
-            console.log(typeof (pid));
-            console.log(query);
             if (query == null || query == "") {
                 alert("Please type a query to Post...!!");
             }
@@ -1309,15 +1193,9 @@ var SingleViewComponent = /** @class */ (function () {
                 };
                 this.query = '';
                 this.apiservice.addMessage(message).subscribe(function (message) {
-                    console.log("in service call add message");
-                    console.log(message);
                     alert("message added successfully..!!");
                     _this.apiservice.getMessage(_this.message, pid).subscribe(function (message) {
-                        console.log("in service call");
                         _this.message = message;
-                        console.log("this.books getbookId");
-                        console.log(_this.message);
-                        //this.router1.navigateByUrl('/')
                     });
                 });
             }
@@ -1397,11 +1275,8 @@ var WishlistComponent = /** @class */ (function () {
         var _this = this;
         this.user = JSON.parse(sessionStorage.getItem('user'));
         this.apiservice.getWish(this.carts, this.user.id).subscribe(function (carts) {
-            console.log("in service call getcomponent = ");
-            console.log(carts);
             _this.carts = carts;
             for (var data in carts) {
-                //console.log(" price = ")
                 _this.i += carts[data].product.resellPrice;
                 _this.j += carts[data].product.actualPrice;
             }
@@ -1411,30 +1286,18 @@ var WishlistComponent = /** @class */ (function () {
         var _this = this;
         this.i = 0;
         this.j = 0;
-        console.log(id);
-        console.log("userid = ");
-        console.log(this.user.id);
         this.apiservice.delWish(this.carts, id, this.user.id).subscribe(function (carts) {
-            console.log("in service call delCart = ");
-            console.log(carts);
             _this.carts = carts;
             alert("Successfully delete item from Wishlist...!!");
             for (var data in carts) {
-                //console.log(" price = ")
                 _this.i += carts[data].product.resellPrice;
                 _this.j += carts[data].product.actualPrice;
             }
             _this.apiservice.getCartcount(_this.user.id).subscribe(function (i) {
-                console.log("in service call getCartcount = ");
                 _this.j = i.count;
-                console.log("j=");
-                console.log(_this.j);
                 document.getElementById("carttext").innerText = "Cart :" + _this.j + " item(s)";
                 _this.apiservice.getWishcount(_this.user.id).subscribe(function (i) {
-                    console.log("in service call getCartcount = ");
                     _this.j = i.count;
-                    console.log("j=");
-                    console.log(_this.j);
                     document.getElementById("wishtext").innerText = "WishList :" + _this.j + " item(s)";
                 });
             });
@@ -1450,36 +1313,18 @@ var WishlistComponent = /** @class */ (function () {
             this.router1.navigateByUrl('/login');
         }
         else {
-            console.log("i=");
-            console.log(id);
-            console.log("in view function id= " + id);
-            console.log(this.user);
-            console.log("user id = ", this.user.id);
-            //this.router1.navigate(['cart', id]);
             this.apiservice.addCart(this.books, id, this.user.id).subscribe(function (books) {
-                console.log("in service addcart call");
-                console.log(books.status);
                 if (books.status == 1) {
-                    console.log("in if");
                     _this.apiservice.getCartcount(_this.user.id).subscribe(function (i) {
-                        console.log("in service call getCartcount = ");
                         _this.j = i.count;
-                        console.log("j=");
-                        console.log(_this.j);
                         document.getElementById("carttext").innerText = "Cart :" + _this.j + " item(s)";
                         _this.apiservice.getWishcount(_this.user.id).subscribe(function (i) {
-                            console.log("in service call getCartcount = ");
                             _this.j = i.count;
-                            console.log("j=");
-                            console.log(_this.j);
                             document.getElementById("wishtext").innerText = "WishList :" + _this.j + " item(s)";
                         });
                         _this.apiservice.getWish(_this.carts, _this.user.id).subscribe(function (carts) {
-                            console.log("in service call getcomponent = ");
-                            console.log(carts);
                             _this.carts = carts;
                             for (var data in carts) {
-                                //console.log(" price = ")
                                 _this.i += carts[data].product.resellPrice;
                                 _this.j += carts[data].product.actualPrice;
                             }
@@ -1489,7 +1334,6 @@ var WishlistComponent = /** @class */ (function () {
                     alert("Item Succesfully Added to Cart");
                 }
                 else {
-                    console.log("in else");
                     alert("Item already added in cart...!!");
                 }
                 _this.router1.navigateByUrl('/wish');

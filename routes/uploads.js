@@ -6,7 +6,6 @@ const multerConf = {
         next(null, './public/uploads')
                                             },
       filename : function(req, file, next){
-        console.log(file)
         const ext = file.mimetype.split('/')[1];
         next(null,file.fieldname+'-'+Date.now()+'.'+ext)
                                           }

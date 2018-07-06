@@ -7,9 +7,6 @@ const Wishlist = require('../db').Wishlist
 route.post('/:id/:id2',(req, res) =>{
     var wish_id = req.params.id
     var user_id = req.params.id2
-    console.log("uid = ")
-    console.log(user_id)
-    console.log("in get func() cart remove item = "+user_id)
             Wishlist.destroy({
                 where: {
                    id: wish_id
@@ -27,8 +24,6 @@ route.post('/:id/:id2',(req, res) =>{
                                                     model:Product
                                                 }]
                                                         }).then(result => {
-                                                            console.log("result = ")
-                                                            console.log(result[0]);
                                                             res.send(result)
                                                                           });
                                           });

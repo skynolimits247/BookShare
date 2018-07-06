@@ -645,7 +645,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Latest compiled and minified CSS -->\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n<!-- Optional theme -->\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\" integrity=\"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp\" crossorigin=\"anonymous\">\n<!-- Latest compiled and minified JavaScript -->\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n\n<nav class=\"navbar navbar-inverse\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" routerLink=\"/\">Home</a>\n    </div>  \n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav\" id =\"navbarcustom\">\n          <li id=\"signup\"><a routerLink=\"/signup\">Signup</a></li>\n          <li id=\"login\"><a routerLink=\"/signup\">Login </a></li>\n          <li id=\"cart\"><a routerLink=\"/cart\" id=\"carttext\">Cart :</a></li>\n          <li id=\"wishlist\"><a routerLink=\"/wish\" id=\"wishtext\">WishList</a></li>\n          <li id=\"logout\"><a routerLink=\"/logout\">LogOut</a></li>\n          <li id=\"sell\"><a routerLink=\"/sell\">SellBooks</a></li>\n          \n\n      </ul>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>\n"
+module.exports = "<!-- Latest compiled and minified CSS -->\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n<!-- Optional theme -->\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\" integrity=\"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp\" crossorigin=\"anonymous\">\n<!-- Latest compiled and minified JavaScript -->\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n\n<nav class=\"navbar navbar-inverse\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar collapse\" (click)=\"toggleNavbar()\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" routerLink=\"/\">Home</a>\n    </div>  \n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse\" id=\"bs\" [ngClass]=\"{ 'show': navbarOpen }\">\n      <ul class=\"nav navbar-nav\" id =\"navbarcustom\">\n          <li id=\"signup\"><a routerLink=\"/signup\">Signup</a></li>\n          <li id=\"login\"><a routerLink=\"/signup\">Login </a></li>\n          <li id=\"cart\"><a routerLink=\"/cart\" id=\"carttext\">Cart :</a></li>\n          <li id=\"wishlist\"><a routerLink=\"/wish\" id=\"wishtext\">WishList</a></li>\n          <li id=\"logout\"><a routerLink=\"/logout\">LogOut</a></li>\n          <li id=\"sell\"><a routerLink=\"/sell\">SellBooks</a></li>\n          \n\n      </ul>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>\n<script src=\"http://code.jquery.com/jquery-2.1.1.min.js\"></script>\n<script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\" integrity=\"sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49\" crossorigin=\"anonymous\"></script>\n<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js\" integrity=\"sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T\" crossorigin=\"anonymous\"></script>"
 
 /***/ }),
 
@@ -677,30 +677,47 @@ var HeaderComponent = /** @class */ (function () {
         this.apiservice = apiservice;
         this.i = {};
         this.j = 0;
+        this.navbarOpen = false;
     }
+    HeaderComponent.prototype.toggleNavbar = function () {
+        this.navbarOpen = !this.navbarOpen;
+    };
     HeaderComponent.prototype.ngOnInit = function () {
         var _this = this;
+        //this is the hiding mechanism 
         if (JSON.parse(sessionStorage.getItem('user')) == null) {
+            console.log("in if ");
         }
         else {
+            console.log("in else calculating cart value");
             var user = JSON.parse(sessionStorage.getItem('user'));
             var name = user.fname;
             this.apiservice.getCartcount(user.id).subscribe(function (i) {
+                console.log("in service call getCartcount = ");
                 _this.j = i.count;
+                console.log("j=");
+                console.log(_this.j);
                 document.getElementById("carttext").innerText = "Cart :" + _this.j + " item(s)";
                 _this.apiservice.getWishcount(user.id).subscribe(function (i) {
+                    console.log("in service call getCartcount = ");
                     _this.j = i.count;
+                    console.log("j=");
+                    console.log(_this.j);
                     document.getElementById("wishtext").innerText = "WishList :" + _this.j + " item(s)";
                 });
             });
         }
+        console.log("session_name = ");
+        console.log(name);
         if (name == undefined) {
+            console.log("header in if");
             document.getElementById("logout").style.display = "none";
             document.getElementById("cart").style.display = "none";
             document.getElementById("wishlist").style.display = "none";
             document.getElementById("sell").style.display = "none";
         }
         else {
+            console.log("header in else");
             document.getElementById("login").style.display = "none";
             document.getElementById("signup").style.display = "none";
         }
@@ -1377,7 +1394,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\AKASH\Desktop\demo\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\AKASH\Desktop\final copy\demo\src\main.ts */"./src/main.ts");
 
 
 /***/ })

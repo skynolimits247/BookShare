@@ -61,7 +61,6 @@ const Product = db.define('products',{
 	},
 	image: {
 		type: Sequelize.STRING,
-		//defaultValue: 'image-1529779071623.jpeg'
 	},
 	name: {
 		type: Sequelize.STRING,

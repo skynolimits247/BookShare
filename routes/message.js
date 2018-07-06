@@ -26,13 +26,14 @@ route.post('/',(req, res) =>{
                      users.addMessage(message)})
                                             })
             })
-           // res.send({status:0})
+           res.send({status:0})
 })
 route.get('/:id',(req, res) =>{
     var pid = req.params.id
     console.log("in get message  func() pid = "+pid)
             Message.findAll({
-                order:Sequelize.literal('(createdAt) DESC'),
+                order:Sequelize.literal('(message.createdAt) DESC'),
+                //order:Sequelize.literal('message.createdAt DESC'),
                 where:{productkey:pid},
                 include:[{
                     model:User
@@ -43,7 +44,7 @@ route.get('/:id',(req, res) =>{
             }).then(result => {
                         console.log("count = ")
                         console.log(result);
-                        //console.log(result.rows);
+                        console.log(result.rows);
                         res.send(result)
                                           });
                             })

@@ -223,7 +223,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<router-outlet></router-outlet>\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -316,8 +316,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var routes = [
     {
         path: '',
-        redirectTo: 'body',
-        pathMatch: 'full'
+        component: _body_body_component__WEBPACK_IMPORTED_MODULE_5__["BodyComponent"]
     },
     {
         path: 'signup',
@@ -405,7 +404,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<h2> Welcome <b> {{fname}} </b> ......!!</h2>\n<div class=\"row\" >\n    <div class=\"col-md-8\" style=\"margin-left: 10%\">\n            <div class=\"row\" style=\"margin-left: 10%\">\n                <div class=\"col-4 col-md-3 well\">\n                        Price Low to High<input type=\"radio\" name=\"pricesort\" id=\"lowtohigh\" (click)= \"sortPrice(12)\"><br>\n                        Price High to Low<input type=\"radio\" name=\"pricesort\" id=\"hightolow\" (click)= \"sortPrice(21)\">\n                </div>\n                <div class=\"col-4 col-md-3 well\">\n                        Search By Condition\n                        <select ngModel name=\"condition\">\n                                <option value=\"New\"   (click)= \"search('new')\">New</option>\n                                <option value=\"Almost New\"   (click)= \"search('Almost New')\">Almost New</option>\n                                <option value=\"Slight Damage\"   (click)= \"search('Slight Damage')\">Slight Damage</option>\n                                <option value=\"Worn\" (click)= \"search('Worn')\">Worn</option>\n                              </select>\n                </div>\n                <div class=\"col-4 col-md-4 well\"> \n                  \n                      <input type=\"text\" class=\"form-control\" placeholder=\"Search\" name=\"search1\" id=\"serach1\" [(ngModel)]=\"query\" (keyup.enter)=\"search(query)\">\n\n                \n            </div>\n            <div class=\"col-4 col-md-2 well\"> \n                <button class=\"btn btn-sm btn-success\" (click)= \"reset()\" > Reset Filters</button>\n            </div>\n\n    </div>\n\n    <div class=\"col-lg-12 col-md-12 col-sm-12\" id=\"product-list\" style=\"margin-left: 10%\">\n            \n                \n        <div class=\" col-xs-7 col-sm-6 col-md-6 col-lg-5 card\" style=\"margin-top:5px; \" *ngFor=\"let book of books\">\n            <table class=\"well\" style=\"text-align: center;\" width=\"300\" height=\"200\">\n                <tr ><td rowspan=\"5\"><img src=\"{{book.image}}\" alt=\"image\" style=\"height: 150px; width: 130px;\"></td><td><b> {{book.name}}</b></td></tr>\n                <tr><td>By : {{book.authorName}}</td></tr>\n                <tr><td> {{book.condition}} Condition</td></tr>\n                <tr><td><del>₹ {{book.actualPrice}}</del><b> ₹ {{book.resellPrice}}</b></td></tr>\n                <tr><td> <button class=\"btn btn-primary\" (click)= \"view(book.id)\">Know More</button> </td></tr>\n            </table>\n            <div class=\"col-xs-1 col-sm-1 col-md-1 col-lg-2\"></div>\n        </div>\n     \n    </div>\n</div>"
+module.exports = "<app-header></app-header>\n\n<h2> Welcome <b> {{fname}} </b> ......!!</h2>\n<div class=\"row\" >\n    <div class=\"col-md-9\" style=\"margin-left: 10%; margin-right: 10%;\">\n            <div class=\"row\" style=\"margin-left: 10%; margin-right: 10%;\">\n                <div class=\"col-6 col-md-3 well\">\n                        Price Low to High<input type=\"radio\" name=\"pricesort\" id=\"lowtohigh\" (click)= \"sortPrice(12)\"><br>\n                        Price High to Low<input type=\"radio\" name=\"pricesort\" id=\"hightolow\" (click)= \"sortPrice(21)\">\n                </div>\n                <div class=\"col-6 col-md-3 well\">\n                        Search By Condition\n                        <select ngModel name=\"condition\">\n                                <option value=\"New\"   (click)= \"search('new')\">New</option>\n                                <option value=\"Almost New\"   (click)= \"search('Almost New')\">Almost New</option>\n                                <option value=\"Slight Damage\"   (click)= \"search('Slight Damage')\">Slight Damage</option>\n                                <option value=\"Worn\" (click)= \"search('Worn')\">Worn</option>\n                              </select>\n                </div>\n                <div class=\"col-6 col-md-3 well\"> \n                  \n                      <input type=\"text\" class=\"form-control\" placeholder=\"Search\" name=\"search1\" id=\"serach1\" [(ngModel)]=\"query\" (keyup.enter)=\"search(query)\">\n\n                \n            </div>\n            <div class=\"col-6 col-md-3 well\" > \n                <button class=\"btn btn-sm btn-success\" (click)= \"reset()\" > Reset Filters</button>\n            </div>\n\n    </div>\n\n    <div class=\"col-lg-12 col-md-12 col-sm-12\" id=\"product-list\" style=\"margin-left: 10%; margin-right: 10%;\">\n            \n                \n        <div class=\" col-xs-7 col-sm-9 col-md-6 col-lg-5 \" style=\"margin-top:5px; \" *ngFor=\"let book of books\">\n            <table class=\"well\" style=\"text-align: center;\" width=\"300\" height=\"200\">\n                <tr ><td rowspan=\"5\"><img src=\"{{book.image}}\" alt=\"image\" style=\"height: 150px; width: 130px;\"></td><td><b> {{book.name}}</b></td></tr>\n                <tr><td>By : {{book.authorName}}</td></tr>\n                <tr><td> {{book.condition}} Condition</td></tr>\n                <tr><td><del>₹ {{book.actualPrice}}</del><b> ₹ {{book.resellPrice}}</b></td></tr>\n                <tr><td> <button class=\"btn btn-primary\" (click)= \"view(book.id)\">Know More</button> </td></tr>\n            </table>\n            <div class=\"col-xs-1 col-sm-1 col-md-1 col-lg-2\"></div>\n        </div>\n     \n    </div>\n</div>"
 
 /***/ }),
 
@@ -597,6 +596,22 @@ var CartComponent = /** @class */ (function () {
                 _this.i += carts[data].product.resellPrice;
                 _this.j += carts[data].product.actualPrice;
             }
+            _this.apiservice.getCartcount(_this.user.id).subscribe(function (i) {
+                console.log("in service call getCartcount = ");
+                _this.j = i.count;
+                console.log("j=");
+                console.log(_this.j);
+                document.getElementById("carttext").innerText = "Cart :" + _this.j + " item(s)";
+                _this.apiservice.getWishcount(_this.user.id).subscribe(function (i) {
+                    console.log("in service call getCartcount = ");
+                    _this.j = i.count;
+                    console.log("j=");
+                    console.log(_this.j);
+                    document.getElementById("wishtext").innerText = "WishList :" + _this.j + " item(s)";
+                });
+            });
+            alert("Item Delete from Cart..!!");
+            _this.router1.navigateByUrl('/cart');
         });
     };
     CartComponent.prototype.checkout = function () {
@@ -643,7 +658,7 @@ module.exports = "\r\n\r\n\r\n@import url(http://fonts.googleapis.com/css?family
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n<script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js\"></script>\n<script src=\"//code.jquery.com/jquery-1.11.1.min.js\"></script>\n<!------ Include the above in your HEAD tag ---------->\n\n<link href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css\" rel=\"stylesheet\">\n\n\n<!--footer-->\n\n\n<div class=\"footer-bottom\">\n\n\t<div class=\"container\">\n\n\t\t<div class=\"row\">\n\n\t\t\t<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\">\n\n\t\t\t\t<div class=\"copyright\">\n\n\t\t\t\t\t© 2015, Webenlance, All rights reserved\n\n\t\t\t\t</div>\n\n\t\t\t</div>\n\n\t\t\t<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\">\n\n\t\t\t\t<div class=\"design\">\n\n\t\t\t\t\t <a href=\"#\">Franchisee </a> |  <a target=\"_blank\" href=\"http://www.webenlance.com\">Web Design & Development by Webenlance</a>\n\n\t\t\t\t</div>\n\n\t\t\t</div>\n\n\t\t</div>\n\n\t</div>\n\n</div>"
+module.exports = ""
 
 /***/ }),
 
@@ -706,7 +721,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Latest compiled and minified CSS -->\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n<!-- Optional theme -->\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\" integrity=\"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp\" crossorigin=\"anonymous\">\n<!-- Latest compiled and minified JavaScript -->\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n<nav class=\"navbar navbar-inverse\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" routerLink=\"/\">Home</a>\n    </div>  \n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav\" id =\"navbarcustom\">\n          <li id=\"signup\"><a routerLink=\"/signup\">Signup</a></li>\n          <li id=\"login\"><a routerLink=\"/signup\">Login </a></li>\n          <li id=\"cart\"><a routerLink=\"/cart\" id=\"carttext\">Cart :</a></li>\n          <li id=\"wishlist\"><a routerLink=\"/wish\" id=\"wishtext\">WishList</a></li>\n          <li id=\"logout\"><a routerLink=\"/logout\">LogOut</a></li>\n          <li id=\"sell\"><a routerLink=\"/sell\">SellBooks</a></li>\n          \n\n      </ul>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>"
+module.exports = "<!-- Latest compiled and minified CSS -->\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n<!-- Optional theme -->\n<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\" integrity=\"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp\" crossorigin=\"anonymous\">\n<!-- Latest compiled and minified JavaScript -->\n<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n\n<nav class=\"navbar navbar-inverse\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" routerLink=\"/\">Home</a>\n    </div>  \n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav\" id =\"navbarcustom\">\n          <li id=\"signup\"><a routerLink=\"/signup\">Signup</a></li>\n          <li id=\"login\"><a routerLink=\"/signup\">Login </a></li>\n          <li id=\"cart\"><a routerLink=\"/cart\" id=\"carttext\">Cart :</a></li>\n          <li id=\"wishlist\"><a routerLink=\"/wish\" id=\"wishtext\">WishList</a></li>\n          <li id=\"logout\"><a routerLink=\"/logout\">LogOut</a></li>\n          <li id=\"sell\"><a routerLink=\"/sell\">SellBooks</a></li>\n          \n\n      </ul>\n    </div><!-- /.navbar-collapse -->\n  </div><!-- /.container-fluid -->\n</nav>\n"
 
 /***/ }),
 
@@ -943,30 +958,36 @@ var SellComponent = /** @class */ (function () {
         console.log(frm.value);
         var s = '';
         var fd = new FormData();
-        fd.append('image', this.selectedFile, this.selectedFile.name);
-        console.log("fd = ");
-        console.log(fd);
-        this.http.post('http://localhost:3333/upload', fd).subscribe(function (res) {
-            console.log("image uploaded");
-            s = res.toString();
-            console.log(res);
-            console.log("userid= ");
-            console.log(_this.user.id);
-            var book = {
-                name: frm.value.name,
-                authorName: frm.value.authorName,
-                condition: frm.value.condition,
-                actualPrice: frm.value.actualPrice,
-                resellPrice: frm.value.resellPrice,
-                image: 'uploads/' + s,
-                postedby: _this.user.id,
-            };
-            console.log("service call");
-            console.log(book);
-            _this.apiservice.addBook(book).subscribe(function (book) {
-                //this.getModels();    
+        if (frm.value.authorName == '' || frm.value.condition == "" || frm.value.actualPrice == "" || frm.value.resellPrice == "" || this.user.id == "" || this.selectedFile == undefined) {
+            alert("Please fill all the details of the form....!!!");
+        }
+        else {
+            fd.append('image', this.selectedFile, this.selectedFile.name);
+            console.log("fd = ");
+            console.log(fd);
+            this.http.post('/upload', fd).subscribe(function (res) {
+                console.log("image uploaded");
+                s = res.toString();
+                console.log(res);
+                console.log("userid= ");
+                console.log(_this.user.id);
+                var book = {
+                    name: frm.value.name,
+                    authorName: frm.value.authorName,
+                    condition: frm.value.condition,
+                    actualPrice: frm.value.actualPrice,
+                    resellPrice: frm.value.resellPrice,
+                    image: 'uploads/' + s,
+                    postedby: _this.user.id,
+                };
+                console.log("service call");
+                console.log(book);
+                _this.apiservice.addBook(book).subscribe(function (book) {
+                    console.log("added");
+                    alert("Successfully Added Book for sale..!!");
+                });
             });
-        });
+        }
     };
     SellComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1038,36 +1059,41 @@ var SignupComponent = /** @class */ (function () {
     }
     SignupComponent.prototype.addUser = function (frm) {
         var _this = this;
-        console.log(frm.value);
-        var model = {
-            email: frm.value.email,
-            password: frm.value.pass
-        };
-        this.apiservice.getUser(model).subscribe(function (model) {
-            console.log("model = ");
-            console.log(model);
-            if (model == null) {
-                console.log("inside if");
-                var model_1 = {
-                    fname: frm.value.fname,
-                    lname: frm.value.lname,
-                    address: frm.value.address,
-                    college: frm.value.college,
-                    course: frm.value.course,
-                    email: frm.value.email,
-                    mobile: frm.value.mob,
-                    password: frm.value.pass
-                };
-                _this.apiservice.addUser(model_1).subscribe(function (model) {
-                    //this.getModels();
-                });
-                alert("Account created..Login to Continue...!!");
-                _this.router.navigateByUrl('/signup');
-            }
-            else {
-                alert("EmailID already registered...!!");
-            }
-        });
+        if (frm.value.fname == "" || frm.value.lname == '' || frm.value.address == '' || frm.value.college == '' || frm.value.course == "" || frm.value.email == "" || frm.value.mob == "" || frm.value.pass == "") {
+            alert("Please fill all the details of the form....!!!");
+        }
+        else {
+            console.log(frm.value);
+            var model = {
+                email: frm.value.email,
+                password: frm.value.pass
+            };
+            this.apiservice.getUser(model).subscribe(function (model) {
+                console.log("model = ");
+                console.log(model);
+                if (model == null) {
+                    console.log("inside if");
+                    var model_1 = {
+                        fname: frm.value.fname,
+                        lname: frm.value.lname,
+                        address: frm.value.address,
+                        college: frm.value.college,
+                        course: frm.value.course,
+                        email: frm.value.email,
+                        mobile: frm.value.mob,
+                        password: frm.value.pass
+                    };
+                    _this.apiservice.addUser(model_1).subscribe(function (model) {
+                        //this.getModels();
+                    });
+                    alert("Account created..Login to Continue...!!");
+                    _this.router.navigateByUrl('/signup');
+                }
+                else {
+                    alert("EmailID already registered...!!");
+                }
+            });
+        }
     };
     SignupComponent.prototype.logUser = function (frn) {
         var _this = this;
@@ -1131,7 +1157,7 @@ module.exports = ".center {\r\n    margin: auto;\r\n    width: 60%;\r\n    paddi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<div class=\"row center\" id=\"product-list\" >      \n    <div class=\"col-sm-8 card well\" style=\"margin-top:5px;\" *ngIf=\"books\">\n        <table class=\"table-hover well\" style=\"text-align: center;\">\n            <tr><td rowspan=\"8\" colspan=\"2\"><img src=\"{{books.image}}\" alt=\"image\" style=\"height: 200px; width: 150px;\"></td><td colspan=\"2\"><b> {{books.name}}</b></td></tr>\n            <tr><td colspan=\"2\">By : {{books.authorName}}</td></tr>\n            <tr><td colspan=\"2\"> {{books.condition}} Condition</td></tr>\n            <tr><td colspan=\"2\"><del>₹ {{books.actualPrice}}</del><b> ₹ {{books.resellPrice}}</b></td></tr>  \n            <tr><td colspan=\"2\">Seller Name :{{books.user.fname}} </td></tr>\n            \n              \n            \n                <tr *ngIf=\"user.id == books.user.id; else elseBlock\">\n                  <td colspan=\"2\">You Can Not Buy Your own Book...!!<button class=\"btn btn-danger\" (click)= \"delBook(books.id)\">Delete Your Post</button> </td>\n                </tr>\n                <ng-template #elseBlock><tr><td colspan=\"2\" > <button class=\"btn btn-primary\" (click)= \"addCart(books.id)\"> Add to Cart</button>\n                    &nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-primary\" (click)= \"addWish(books.id)\">Add to WishList</button></td></tr>\n              \n            </ng-template>\n            </table>\n    </div>\n    <div class=\"col-sm-7 card well\" style=\"margin-top:5px;\">\n        <table class=\"table-bordered\">\n            <tr><td><textarea rows=\"3\" cols=\"40\" style=\"resize:none\" placeholder=\"Ask seller your query here..!\" [(ngModel)]=\"query\"></textarea></td>\n              </tr><tr>  <td> <button class=\"btn btn-primary\" (click)= \"addMsg(books.id,query)\">Ask Seller</button> </td></tr>\n        </table>\n                  \n                        <table class=\"table-bordered\" style=\"text-align:center;\">\n                                <div class=\"well\" *ngFor=\"let messages of message\">\n                                      <tr>\n                                          <td>Posted By : {{ messages.user.fname }}<br> <small>{{ messages.createdAt| date:'longDate' }} ago</small></td>\n                                            </tr><tr>\n                                          <td><br>Comment :<i> <p>{{messages.text}}</p></i></td>\n                                      </tr>\n                                </div>\n                        </table>\n                  \n       \n    </div>\n\n</div>\n\n\n"
+module.exports = "<app-header></app-header>\n<div class=\"row center\" id=\"product-list\" >      \n    <div class=\"col-sm-8 card well\" style=\"margin-top:5px;\" *ngIf=\"books\">\n        <table class=\"well\" style=\"text-align: center;\">\n            <tr><td rowspan=\"8\" colspan=\"2\"><img src=\"{{books.image}}\" alt=\"image\" style=\"height: 200px; width: 150px;\"></td><td colspan=\"2\"><b> {{books.name}}</b></td></tr>\n            <tr><td colspan=\"2\">By : {{books.authorName}}</td></tr>\n            <tr><td colspan=\"2\"> {{books.condition}} Condition</td></tr>\n            <tr><td colspan=\"2\"><del>₹ {{books.actualPrice}}</del><b> ₹ {{books.resellPrice}}</b></td></tr>  \n            <tr><td colspan=\"2\">Seller Name :{{books.user.fname}} </td></tr>\n            \n              \n            \n                <tr *ngIf=\"user.id == books.user.id; else elseBlock\">\n                  <td colspan=\"2\">You Can Not Buy Your own Book...!!<button class=\"btn btn-danger\" (click)= \"delBook(books.id)\">Delete Your Post</button> </td>\n                </tr>\n                <ng-template #elseBlock><tr><td colspan=\"2\" > <button class=\"btn btn-primary\" (click)= \"addCart(books.id)\"> Add to Cart</button>\n                    &nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-primary\" (click)= \"addWish(books.id)\">Add to WishList</button></td></tr>\n              \n            </ng-template>\n            </table>\n    </div>\n    <div class=\"col-sm-7 card well\" style=\"margin-top:5px;\">\n        <table>\n            <tr><td><textarea rows=\"3\" cols=\"40\" style=\"resize:none\" placeholder=\"Ask seller your query here..!\" [(ngModel)]=\"query\"></textarea></td>\n              </tr><tr>  <td> <button class=\"btn btn-primary\" (click)= \"addMsg(books.id,query)\">Ask Seller</button> </td></tr>\n        </table>\n                  \n                        <table  style=\"text-align:center;\">\n                                <div class=\"well\" *ngFor=\"let messages of message\">\n                                      <tr>\n                                          <td>Posted By : {{ messages.user.fname }}<br> <small>{{ messages.createdAt| date:'longDate' }}</small></td>\n                                            </tr><tr>\n                                          <td><br>Comment :<i> <p>{{messages.text}}</p></i></td>\n                                      </tr>\n                                </div>\n                        </table>\n                  \n       \n    </div>\n\n</div>\n\n\n"
 
 /***/ }),
 
@@ -1261,28 +1287,36 @@ var SingleViewComponent = /** @class */ (function () {
     };
     SingleViewComponent.prototype.addMsg = function (pid, query) {
         var _this = this;
-        console.log(typeof (pid));
-        console.log(query);
-        if (query == null) {
-            alert("Please type a query to Post...!!");
+        if (this.user == '') {
+            alert("PLease SignUp / LogIn to Continue...!!");
+            this.router1.navigateByUrl('/login');
         }
         else {
-            var message = {
-                productkey: pid,
-                text: query,
-                postedby: this.user.id
-            };
-            this.apiservice.addMessage(message).subscribe(function (message) {
-                console.log("in service call add message");
-                console.log(message);
-                _this.apiservice.getMessage(_this.message, pid).subscribe(function (message) {
-                    console.log("in service call");
-                    _this.message = message;
-                    console.log("this.books getbookId");
-                    console.log(_this.message);
+            console.log(typeof (pid));
+            console.log(query);
+            if (query == null || query == "") {
+                alert("Please type a query to Post...!!");
+            }
+            else {
+                var message = {
+                    productkey: pid,
+                    text: query,
+                    postedby: this.user.id
+                };
+                this.query = '';
+                this.apiservice.addMessage(message).subscribe(function (message) {
+                    console.log("in service call add message");
+                    console.log(message);
+                    alert("message added successfully..!!");
+                    _this.apiservice.getMessage(_this.message, pid).subscribe(function (message) {
+                        console.log("in service call");
+                        _this.message = message;
+                        console.log("this.books getbookId");
+                        console.log(_this.message);
+                        //this.router1.navigateByUrl('/')
+                    });
                 });
-                _this.router1.navigateByUrl('/');
-            });
+            }
         }
     };
     SingleViewComponent = __decorate([
@@ -1380,15 +1414,33 @@ var WishlistComponent = /** @class */ (function () {
             console.log("in service call delCart = ");
             console.log(carts);
             _this.carts = carts;
+            alert("Successfully delete item from Wishlist...!!");
             for (var data in carts) {
                 //console.log(" price = ")
                 _this.i += carts[data].product.resellPrice;
                 _this.j += carts[data].product.actualPrice;
             }
+            _this.apiservice.getCartcount(_this.user.id).subscribe(function (i) {
+                console.log("in service call getCartcount = ");
+                _this.j = i.count;
+                console.log("j=");
+                console.log(_this.j);
+                document.getElementById("carttext").innerText = "Cart :" + _this.j + " item(s)";
+                _this.apiservice.getWishcount(_this.user.id).subscribe(function (i) {
+                    console.log("in service call getCartcount = ");
+                    _this.j = i.count;
+                    console.log("j=");
+                    console.log(_this.j);
+                    document.getElementById("wishtext").innerText = "WishList :" + _this.j + " item(s)";
+                });
+            });
+            _this.router1.navigateByUrl('/wish');
         });
     };
     WishlistComponent.prototype.addCart = function (id) {
         var _this = this;
+        this.i = 0;
+        this.j = 0;
         if (this.user == '') {
             alert("PLease SignUp / LogIn to Continue...!!");
             this.router1.navigateByUrl('/login');
@@ -1405,13 +1457,38 @@ var WishlistComponent = /** @class */ (function () {
                 console.log(books.status);
                 if (books.status == 1) {
                     console.log("in if");
+                    _this.apiservice.getCartcount(_this.user.id).subscribe(function (i) {
+                        console.log("in service call getCartcount = ");
+                        _this.j = i.count;
+                        console.log("j=");
+                        console.log(_this.j);
+                        document.getElementById("carttext").innerText = "Cart :" + _this.j + " item(s)";
+                        _this.apiservice.getWishcount(_this.user.id).subscribe(function (i) {
+                            console.log("in service call getCartcount = ");
+                            _this.j = i.count;
+                            console.log("j=");
+                            console.log(_this.j);
+                            document.getElementById("wishtext").innerText = "WishList :" + _this.j + " item(s)";
+                        });
+                        _this.apiservice.getWish(_this.carts, _this.user.id).subscribe(function (carts) {
+                            console.log("in service call getcomponent = ");
+                            console.log(carts);
+                            _this.carts = carts;
+                            for (var data in carts) {
+                                //console.log(" price = ")
+                                _this.i += carts[data].product.resellPrice;
+                                _this.j += carts[data].product.actualPrice;
+                            }
+                            _this.router1.navigateByUrl('/wish');
+                        });
+                    });
                     alert("Item Succesfully Added to Cart");
                 }
                 else {
                     console.log("in else");
                     alert("Item already added in cart...!!");
                 }
-                _this.router1.navigateByUrl('/');
+                _this.router1.navigateByUrl('/wish');
             });
         }
     };
@@ -1490,7 +1567,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\AKASH\Desktop\angular\demo\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\AKASH\Desktop\demo\src\main.ts */"./src/main.ts");
 
 
 /***/ })

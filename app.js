@@ -23,6 +23,7 @@ const SERVER_PORT = process.env.PORT || 3333
 app.use('/', express.static(__dirname + "/public"));
 
 app.use('/home',require('./routes'))
+app.use('/body',require('./routes'))
 app.use('/signup',require('./routes/signup'))
 app.use('/logout',require('./routes/logout'))
 app.use('/login',require('./routes/login'))

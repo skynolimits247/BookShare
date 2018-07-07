@@ -7,6 +7,7 @@ API Reference (POSTMAN JSON API's)
 
 All CRUD Operation on following routes -
 /home
+
 /body
 /signup
 /logout
